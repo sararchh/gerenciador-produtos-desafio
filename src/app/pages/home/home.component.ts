@@ -39,6 +39,7 @@ export class HomeComponent {
     'category',
     'price',
     'createdAt',
+    'actions',
   ];
 
   onSearchChange(event: Event) {
@@ -46,5 +47,13 @@ export class HomeComponent {
     this.searchQuery = inputElement.value;
 
     this.facade._filter.next(this.searchQuery);
+  }
+
+  editProduct(product: IProduct) {
+    console.log('Edit product:', product);
+  }
+
+  deleteProduct(product: IProduct) {
+    console.log('Delete product:', product);
   }
 }
