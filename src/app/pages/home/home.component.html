@@ -16,12 +16,45 @@
   </section>
 
   <section class="section-results" *ngIf="products$ | async as products">
-    <div *ngFor="let product of products.data" class="product-item">
-      <h4>{{ product.name }}</h4>
-      <p>{{ product.description }}</p>
-      <p>{{ product.category }}</p>
-      <p>{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</p>
-      <p>{{ product.createdAt | date:'dd/MM/yyyy' }}</p>
-    </div>
+    <table mat-table [dataSource]="products.data">
+      <ng-container matColumnDef="highlight">
+        <th mat-header-cell *matHeaderCellDef>Destaque</th>
+        <td mat-cell *matCellDef="let product">
+          <mat-icon *ngIf="product.highlight">star</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let product">{{ product.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Preço</th>
+        <td mat-cell *matCellDef="let product">
+          {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Criado Em</th>
+        <td mat-cell *matCellDef="let product">
+          {{ product.createdAt | date : "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
   </section>
 </div>

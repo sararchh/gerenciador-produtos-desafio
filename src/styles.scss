@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback");
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -50,9 +50,11 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  height: auto;
   scroll-snap-type: y mandatory;
   overflow-x: hidden;
   background-color: var(--color-background);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 img {
@@ -109,6 +111,3 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
