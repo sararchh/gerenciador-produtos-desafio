@@ -18,11 +18,34 @@
     }
 
     .section-results {
-     margin: 2rem 0 5rem 0;
+      margin: 2rem 0 5rem 0;
       overflow: auto;
 
       table {
+        min-width: 37.5rem;
         width: 100%;
+
+        th {
+          background-color: var(--color-accent);
+          font-weight: bold;
+          text-align: left;
+          padding: 0.5rem 1rem;
+        }
+
+        td {
+          .icon-highlight {
+            color: var(--color-yellow);
+          }
+        }
+
+        .short-info:first-child {
+          width: 5rem;
+        }
+
+        .short-info {
+          max-width: 9rem;
+          width: 9rem;
+        }
       }
     }
   }
