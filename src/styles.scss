@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback");
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #383d49;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-white: #ffffff;
+  --color-text: #0b0a10;
+  --color-background: #f2f2f2;
+  --color-primary: #2c2c54;
+  --color-secondary: #464686;
+  --color-third: #d1d1e6;
+  --color-accent: #a9aab7;
+  --color-slate-primary: #383d49;
+  --color-error: #c2272c;
+
+  --color-gray: #e0e0e0;
+  --color-gray-10: #faf8f8;
+  --color-gray-40: #bdbdbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+}
+
+img {
+  object-fit: cover;
+  background-size: cover;
+}
+
+.scroll-block {
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: var(--color-slate-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-slate-primary);
+  margin: 0 !important;
+}
+
+p {
+  margin: 0 !important;
+  color: var(--color-slate-primary);
+}
+
+label {
+  color: var(--color-slate-primary);
+}
+
+li {
+  color: var(--color-slate-primary);
+}
+
+a {
+  color: var(--color-slate-primary);
+}
+
+button {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
