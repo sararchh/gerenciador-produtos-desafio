@@ -1,0 +1,17 @@
+:host {
+
+  h1 {
+    font-weight: bold;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.8rem;
+  }
+
+  div:last-child {
+    align-self: end;
+    padding: 0 1rem 1rem 1rem;
+  }
+}

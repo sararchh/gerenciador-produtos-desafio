@@ -3,7 +3,7 @@
     {
       "id": "1",
       "name": "Product 111",
-      "description": "Description for product 1",
+      "description": "Description for product 11",
       "price": 10.99,
       "category": "Category 1",
       "highlight": true,
@@ -62,6 +62,15 @@
       "category": "TESTE",
       "highlight": null,
       "createdAt": "2025-03-13T17:16:09.639Z"
+    },
+    {
+      "id": "c1cma49gci4",
+      "name": "TESTE ",
+      "description": "TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE ",
+      "price": 1,
+      "category": "10",
+      "highlight": false,
+      "createdAt": "2025-03-13T19:13:11.549Z"
     }
   ]
 }

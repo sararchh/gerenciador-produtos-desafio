@@ -1,30 +1,48 @@
-<h1 mat-dialog-title>{{ form.get('id')?.value ? 'Editar Produto' : 'Cadastrar Produto' }}</h1>
+<h1 mat-dialog-title>
+  {{ form.get("id")?.value ? "Editar Produto" : "Cadastrar Produto" }}
+</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
-      <input matInput formControlName="name">
-      <mat-error *ngIf="form.get('name')?.invalid">Nome é obrigatório</mat-error>
+      <input matInput formControlName="name" />
+      @if (form.get('name')?.touched && form.get('name')?.invalid) {
+      <mat-error>Nome é obrigatório</mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Descrição</mat-label>
-      <input matInput formControlName="description">
-      <mat-error *ngIf="form.get('description')?.invalid">Descrição é obrigatória</mat-error>
+      <input matInput formControlName="description" />
+      @if (form.get('description')?.touched && form.get('description')?.invalid)
+      {
+      <mat-error>Descrição é obrigatória</mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Preço</mat-label>
-      <input matInput type="number" formControlName="price">
-      <mat-error *ngIf="form.get('price')?.invalid">Preço deve ser um valor positivo</mat-error>
+      <input matInput type="number" formControlName="price" />
+      @if (form.get('price')?.touched && form.get('price')?.invalid) {
+      <mat-error>Preço deve ser um valor positivo</mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Categoria</mat-label>
-      <input matInput formControlName="category">
-      <mat-error *ngIf="form.get('category')?.invalid">Categoria é obrigatória</mat-error>
+      <input matInput formControlName="category" />
+      @if (form.get('category')?.touched && form.get('category')?.invalid) {
+      <mat-error>Categoria é obrigatória</mat-error>
+      }
     </mat-form-field>
     <mat-checkbox formControlName="highlight">Destaque</mat-checkbox>
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button (click)="onSaveClick()" cdkFocusInitial>Salvar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSaveClick()"
+    cdkFocusInitial
+  >
+    Salvar
+  </button>
 </div>

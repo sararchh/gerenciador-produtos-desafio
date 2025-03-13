@@ -1,22 +1,12 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-
-import { IProduct } from '../../../ts/interfaces/product.interface';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { IProduct } from '../../../ts/interfaces/product.interface';
 
 interface DialogData {
   product: IProduct;
@@ -36,9 +26,9 @@ interface DialogData {
     MatCheckboxModule,
   ],
   templateUrl: './product-dialog.component.html',
-  styleUrl: './product-dialog.component.scss',
+  styleUrls: ['./product-dialog.component.scss'],
 })
-export class ProductDialogComponent implements OnInit{
+export class ProductDialogComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<ProductDialogComponent>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly product = this.data.product;
@@ -55,7 +45,6 @@ export class ProductDialogComponent implements OnInit{
     createdAt: [this.data.product.createdAt],
   });
 
-
   ngOnInit(): void {
     this.form.patchValue(this.data.product);
   }
@@ -71,6 +60,8 @@ export class ProductDialogComponent implements OnInit{
   onSaveClick(): void {
     if (this.form.valid) {
       this.dialogRef.close(this.formValue);
+    } else {
+      this.form.markAllAsTouched();
     }
   }
 }

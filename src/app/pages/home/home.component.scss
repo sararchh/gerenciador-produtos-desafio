@@ -34,6 +34,11 @@
       margin: 2rem 0 5rem 0;
       overflow: auto;
 
+      p {
+        text-align: center;
+        font-weight: bold;
+      }
+
       table {
         min-width: 37.5rem;
         width: 100%;
@@ -70,9 +75,12 @@
         align-items: stretch;
         gap: 1rem;
 
-        mat-form-field {
-          width: 100%;
-          margin-bottom: 1rem;
+        div {
+          flex-direction: column;
+
+          mat-form-field {
+            width: 100%;
+          }
         }
       }
     }
