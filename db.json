@@ -19,15 +19,6 @@
       "createdAt": "2025-03-12T00:00:00Z"
     },
     {
-      "id": "9",
-      "name": "Product 9",
-      "description": "Description for product 9",
-      "price": 90.99,
-      "category": "Category 9",
-      "highlight": false,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
       "id": "11",
       "name": "Product 11",
       "description": "Description for product 11",
