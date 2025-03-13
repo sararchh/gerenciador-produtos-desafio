@@ -9,6 +9,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 import { IProduct } from '../../ts/interfaces/product.interface';
 import { ProductFacade } from '../../facades/product.facade';
@@ -35,6 +36,7 @@ import { ProductDialogComponent } from '../../components/molecules/product-dialo
 export class HomeComponent implements AfterViewInit, OnDestroy {
   private facade = inject(ProductFacade);
   private dialog = inject(MatDialog);
+  private toastr = inject(ToastrService);
   private subs = new SubSink();
 
   searchQuery: string = '';
@@ -78,7 +80,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       if (result) {
         result.id = this.generateId();
         result.createdAt = new Date();
-        this.subs.sink = this.facade.create(result).subscribe();
+        this.subs.sink = this.facade.create(result).subscribe({
+          next: () => this.toastr.success('Produto criado com sucesso!'),
+          error: () => this.toastr.error('Erro ao criar produto.')
+        });
       }
     });
   }
@@ -91,7 +96,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     this.subs.sink = dialogRef.afterClosed().subscribe((result: IProduct) => {
       if (result) {
-        this.subs.sink = this.facade.update(result.id, result).subscribe();
+        this.subs.sink = this.facade.update(result.id, result).subscribe({
+          next: () => this.toastr.success('Produto atualizado com sucesso!'),
+          error: () => this.toastr.error('Erro ao atualizar produto.')
+        });
       }
     });
   }
@@ -106,7 +114,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.subs.sink = this.facade.delete(product.id).subscribe();
+        this.subs.sink = this.facade.delete(product.id).subscribe({
+          next: () => this.toastr.success('Produto deletado com sucesso!'),
+          error: () => this.toastr.error('Erro ao deletar produto.')
+        });
       }
     });
   }

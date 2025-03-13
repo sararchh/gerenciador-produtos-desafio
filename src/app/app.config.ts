@@ -2,12 +2,14 @@ import { provideRouter } from '@angular/router';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-
-import { routes } from './app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideClientHydration } from '@angular/platform-browser';
 
+import { provideToastr } from 'ngx-toastr';
+
+import { routes } from './app.routes';
+
 import { ApiInterceptor } from './interceptors/api.interceptor';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimations(),
+    provideToastr(),
     provideHttpClient(withInterceptors([ApiInterceptor])),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
