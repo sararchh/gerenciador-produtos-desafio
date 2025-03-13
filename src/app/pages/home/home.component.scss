@@ -55,6 +55,9 @@
             color: var(--color-yellow);
           }
         }
+        td:nth-child(3) {
+          min-width: 18.75rem;
+        }
 
         .short-info:first-child {
           width: 5rem;
