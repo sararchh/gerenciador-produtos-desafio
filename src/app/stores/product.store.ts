@@ -24,7 +24,7 @@ export class ProductStore {
   public updateCurrent(product: IProduct) {
     const state = this._state.value;
 
-    const productIndex = state.data.findIndex(({ _id }) => _id === product._id);
+    const productIndex = state.data.findIndex(({ id }) => id === product.id);
 
     if (productIndex >= 0) {
       state.data[productIndex] = {
@@ -34,6 +34,18 @@ export class ProductStore {
     } else {
       state.data.push(product);
     }
+
+    this._state.next({
+      ...state,
+    });
+
+    return this.state$;
+  }
+
+  public remove(id: string) {
+    const state = this._state.value;
+
+    state.data = state.data.filter((product) => product.id !== id);
 
     this._state.next({
       ...state,

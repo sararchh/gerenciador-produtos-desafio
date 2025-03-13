@@ -1,5 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  distinctUntilChanged,
+  map,
+  Observable,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 import { ProductService } from '../services/product.service';
 import { IProduct } from '../ts/interfaces/product.interface';
@@ -27,7 +36,6 @@ export class ProductFacade {
     shareReplay({ refCount: true })
   );
 
-
   get(filter?: string): Observable<IProduct[]> {
     return this.service.get().pipe(
       map((products) => {
@@ -49,15 +57,15 @@ export class ProductFacade {
     return this.service.create(product);
   }
 
-  createMany(products: IProduct[]): Observable<IProduct[]> {
-    return this.service.createMany(products);
-  }
-
   update(id: string, product: IProduct): Observable<IProduct> {
     return this.service.update(id, product);
   }
 
-  delete(id: string): Observable<IProduct> {
-    return this.service.delete(id);
+  delete(id: string): Observable<void> {
+    return this.service.delete(id).pipe(
+      tap(() => {
+        this.store.remove(id);
+      })
+    );
   }
 }

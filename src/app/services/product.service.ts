@@ -18,17 +18,13 @@ export class ProductService {
     return this.http.post<IProduct>(this.baseUrl, product);
   }
 
-  createMany(products: any): Observable<IProduct[]> {
-    return this.http.post<IProduct[]>(`${this.baseUrl}/many`, products);
-  }
 
   update(id: string, product: IProduct): Observable<IProduct> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.put<IProduct>(url, product);
   }
 
-  delete(id: string): Observable<IProduct> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<IProduct>(url);
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

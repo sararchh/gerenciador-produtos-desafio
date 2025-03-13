@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "_id": "1",
+      "id": "1",
       "name": "Product 1",
       "description": "Description for product 1",
       "price": 10.99,
@@ -10,16 +10,7 @@
       "createdAt": "2025-03-12T00:00:00Z"
     },
     {
-      "_id": "2",
-      "name": "Product 2",
-      "description": "Description for product 2",
-      "price": 20.99,
-      "category": "Category 2",
-      "highlight": false,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
-      "_id": "3",
+      "id": "3",
       "name": "Product 3",
       "description": "Description for product 3",
       "price": 30.99,
@@ -28,16 +19,7 @@
       "createdAt": "2025-03-12T00:00:00Z"
     },
     {
-      "_id": "4",
-      "name": "Product 4",
-      "description": "Description for product 4",
-      "price": 40.99,
-      "category": "Category 4",
-      "highlight": false,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
-      "_id": "5",
+      "id": "5",
       "name": "Product 5",
       "description": "Description for product 5",
       "price": 50.99,
@@ -46,16 +28,7 @@
       "createdAt": "2025-03-12T00:00:00Z"
     },
     {
-      "_id": "6",
-      "name": "Product 6",
-      "description": "Description for product 6",
-      "price": 60.99,
-      "category": "Category 6",
-      "highlight": false,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
-      "_id": "7",
+      "id": "7",
       "name": "Product 7",
       "description": "Description for product 7",
       "price": 70.99,
@@ -64,30 +37,12 @@
       "createdAt": "2025-03-12T00:00:00Z"
     },
     {
-      "_id": "8",
-      "name": "Product 8",
-      "description": "Description for product 8",
-      "price": 80.99,
-      "category": "Category 8",
-      "highlight": false,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
-      "_id": "9",
+      "id": "9",
       "name": "Product 9",
       "description": "Description for product 9",
       "price": 90.99,
       "category": "Category 9",
       "highlight": true,
-      "createdAt": "2025-03-12T00:00:00Z"
-    },
-    {
-      "_id": "10",
-      "name": "Product 10",
-      "description": "Description for product 10",
-      "price": 100.99,
-      "category": "Category 10",
-      "highlight": false,
       "createdAt": "2025-03-12T00:00:00Z"
     }
   ]
