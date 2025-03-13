@@ -44,7 +44,7 @@ export class ProductFacade {
             product.name.toLowerCase().includes(filter?.toLowerCase() || '') ||
             product.category.toLowerCase().includes(filter?.toLowerCase() || '')
           );
-        });
+        }).sort((a, b) => (b.highlight ? 1 : 0) - (a.highlight ? 1 : 0));
       }),
       tap((filteredProducts) => {
         this.store.update(filteredProducts);

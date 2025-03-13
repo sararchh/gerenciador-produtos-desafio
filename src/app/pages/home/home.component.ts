@@ -1,3 +1,5 @@
+import { CommonModule } from '@angular/common';
+import { SubSink } from 'subsink';
 import { Component, inject, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -5,15 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+
 import { IProduct } from '../../ts/interfaces/product.interface';
 import { ProductFacade } from '../../facades/product.facade';
-import { CommonModule } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/molecules/confirm-dialog/confirm-dialog.component';
-import { map } from 'rxjs/operators';
-import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-home',
@@ -38,13 +37,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private subs = new SubSink();
 
   searchQuery: string = '';
-  products$ = this.facade.state$.pipe(
-    map((products) => {
-      return products.data.sort(
-        (a, b) => (b.highlight ? 1 : 0) - (a.highlight ? 1 : 0)
-      );
-    })
-  );
+  products$ = this.facade.state$;
 
   dataSource = new MatTableDataSource<IProduct>();
   displayedColumns: string[] = [
@@ -61,16 +54,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    this.dataSource.sortingDataAccessor = (item, property) => {
-      switch (property) {
-        case 'highlight':
-          return item.highlight ? 1 : 0;
-        default:
-          return (item as any)[property];
-      }
-    };
+
     this.subs.sink = this.products$.subscribe((products) => {
-      this.dataSource.data = products;
+      this.dataSource.data = products.data;
     });
   }
 
