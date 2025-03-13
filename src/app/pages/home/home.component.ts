@@ -10,6 +10,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { IProduct } from '../../ts/interfaces/product.interface';
 import { ProductFacade } from '../../facades/product.facade';
@@ -38,6 +40,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private dialog = inject(MatDialog);
   private toastr = inject(ToastrService);
   private subs = new SubSink();
+  private searchSubject = new Subject<string>();
 
   searchQuery: string = '';
   products$ = this.facade.state$;
@@ -61,13 +64,18 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.subs.sink = this.products$.subscribe((products) => {
       this.dataSource.data = products.data;
     });
+
+    this.subs.sink = this.searchSubject.pipe(
+      debounceTime(300)
+    ).subscribe((searchQuery) => {
+      this.facade._filter.next(searchQuery);
+    });
   }
 
   onSearchChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.searchQuery = inputElement.value;
-
-    this.facade._filter.next(this.searchQuery);
+    this.searchSubject.next(this.searchQuery);
   }
 
   addProduct() {
