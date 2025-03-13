@@ -49,12 +49,12 @@ html {
 body {
   padding: 0;
   margin: 0;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   height: auto;
   scroll-snap-type: y mandatory;
   overflow-x: hidden;
+  overflow-y: auto;
   background-color: var(--color-background);
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
