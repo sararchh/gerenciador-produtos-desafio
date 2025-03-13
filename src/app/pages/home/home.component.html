@@ -16,38 +16,38 @@
   </section>
 
   <section class="section-results" *ngIf="products$ | async as products">
-    <table mat-table [dataSource]="products.data">
+    <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="highlight">
-        <th mat-header-cell *matHeaderCellDef class="short-info">Destaque</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="short-info">Destaque</th>
         <td mat-cell *matCellDef="let product" class="short-info">
           <mat-icon *ngIf="product.highlight" class="icon-highlight">star</mat-icon>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
         <td mat-cell *matCellDef="let product">{{ product.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
         <td mat-cell *matCellDef="let product">{{ product.description }}</td>
       </ng-container>
 
       <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoria</th>
         <td mat-cell *matCellDef="let product">{{ product.category }}</td>
       </ng-container>
 
       <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef class="short-info">Preço</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="short-info">Preço</th>
         <td mat-cell *matCellDef="let product" class="short-info">
           {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="createdAt">
-        <th mat-header-cell *matHeaderCellDef class="short-info">Criado Em</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="short-info">Criado Em</th>
         <td mat-cell *matCellDef="let product" class="short-info">
           {{ product.createdAt | date : "dd/MM/yyyy" }}
         </td>
