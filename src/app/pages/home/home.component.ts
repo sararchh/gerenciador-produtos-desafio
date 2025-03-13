@@ -13,6 +13,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { IProduct } from '../../ts/interfaces/product.interface';
 import { ProductFacade } from '../../facades/product.facade';
 import { ConfirmDialogComponent } from '../../components/molecules/confirm-dialog/confirm-dialog.component';
+import { ProductDialogComponent } from '../../components/molecules/product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -67,8 +68,32 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.facade._filter.next(this.searchQuery);
   }
 
+  addProduct() {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '400px',
+      data: { product: {} as IProduct }
+    });
+
+    this.subs.sink = dialogRef.afterClosed().subscribe((result: IProduct) => {
+      if (result) {
+        result.id = this.generateId();
+        result.createdAt = new Date();
+        this.subs.sink = this.facade.create(result).subscribe();
+      }
+    });
+  }
+
   editProduct(product: IProduct) {
-    console.log('Edit product:', product);
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '400px',
+      data: { product }
+    });
+
+    this.subs.sink = dialogRef.afterClosed().subscribe((result: IProduct) => {
+      if (result) {
+        this.subs.sink = this.facade.update(result.id, result).subscribe();
+      }
+    });
   }
 
   deleteProduct(product: IProduct) {
@@ -84,6 +109,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
         this.subs.sink = this.facade.delete(product.id).subscribe();
       }
     });
+  }
+
+  generateId(): string {
+    return Math.random().toString(36).substring(2);
   }
 
   ngOnDestroy() {

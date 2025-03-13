@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "1",
-      "name": "Product 1",
+      "name": "Product 111",
       "description": "Description for product 1",
       "price": 10.99,
       "category": "Category 1",
@@ -53,6 +53,15 @@
       "category": "Category 11",
       "highlight": true,
       "createdAt": "2025-03-12T00:00:00Z"
+    },
+    {
+      "id": "li4il3xue3l",
+      "name": "TESTE LOREM ",
+      "description": "TESTE LOREM IPSUM",
+      "price": 9.99,
+      "category": "TESTE",
+      "highlight": null,
+      "createdAt": "2025-03-13T17:16:09.639Z"
     }
   ]
 }

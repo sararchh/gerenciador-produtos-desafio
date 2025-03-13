@@ -8,11 +8,24 @@
       align-items: center;
       justify-content: space-between;
 
-      mat-form-field {
-        min-width: 250px;
+      div {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
 
-        ::ng-deep .mat-mdc-text-field-wrapper {
-          background-color: var(--color-white);
+        .button-add {
+          height: 2.5rem;
+        }
+
+        mat-form-field {
+          min-width: 250px;
+
+          ::ng-deep .mat-mdc-text-field-wrapper {
+            height: 2.7rem;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-white);
+          }
         }
       }
     }

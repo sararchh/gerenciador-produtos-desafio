@@ -54,11 +54,19 @@ export class ProductFacade {
   }
 
   create(product: IProduct): Observable<IProduct> {
-    return this.service.create(product);
+    return this.service.create(product).pipe(
+      tap((newProduct) => {
+        this.store.updateCurrent(newProduct);
+      })
+    )
   }
 
   update(id: string, product: IProduct): Observable<IProduct> {
-    return this.service.update(id, product);
+    return this.service.update(id, product).pipe(
+      tap(() => {
+        this.store.updateCurrent(product);
+      })
+    )
   }
 
   delete(id: string): Observable<void> {
